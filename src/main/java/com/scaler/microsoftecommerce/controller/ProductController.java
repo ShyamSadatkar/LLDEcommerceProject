@@ -2,9 +2,8 @@ package com.scaler.microsoftecommerce.controller;
 import com.scaler.microsoftecommerce.model.Product;
 import com.scaler.microsoftecommerce.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
 
 @RestController
