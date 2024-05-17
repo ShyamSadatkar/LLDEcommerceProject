@@ -12,7 +12,7 @@ import java.util.stream.Collectors;
 @Service
 public class FakeStoreProductService implements ProductService {
 
-    private RestTemplate restTemplate;
+    private final RestTemplate restTemplate;
 
     public FakeStoreProductService(RestTemplate restTemplate) {
         this.restTemplate = restTemplate;
@@ -23,6 +23,7 @@ public class FakeStoreProductService implements ProductService {
         FakeStoreProductDto fakeStoreProductDto = restTemplate.getForObject(
                 "https://fakestoreapi.com/products/"+ productId, FakeStoreProductDto.class
         );
+        assert fakeStoreProductDto != null;
         return fakeStoreProductDto.toProduct();
     }
 
@@ -31,6 +32,7 @@ public class FakeStoreProductService implements ProductService {
         FakeStoreProductDto[] fakeStoreProducts = restTemplate.getForObject(
                 "https://fakestoreapi.com/products", FakeStoreProductDto[].class
         );
+        assert fakeStoreProducts != null;
         return Arrays.stream(fakeStoreProducts).map(FakeStoreProductDto::toProduct).collect(Collectors.toList());
     }
 
@@ -42,6 +44,7 @@ public class FakeStoreProductService implements ProductService {
                 fs,
                 FakeStoreProductDto.class
         );
+        assert response != null;
         return response.toProduct();
     }
 
